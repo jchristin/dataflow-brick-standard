@@ -1,0 +1,34 @@
+{
+  "name": "dataflow-bricks",
+  "version": "0.1.0",
+  "description": "Dataflow standard brick library",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp lint && ./node_modules/mocha/bin/mocha --recursive --require should"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julbaxter/dataflow-bricks.git"
+  },
+  "author": "Julien Christin <jul.christin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/julbaxter/dataflow-bricks/issues"
+  },
+  "homepage": "https://github.com/julbaxter/dataflow-bricks",
+  "dependencies": {
+    "libxmljs": "^0.11.0",
+    "request": "^2.40.0"
+  },
+  "peerDependencies": {
+    "dataflow": "0.x"
+  },
+  "devDependencies": {
+    "dataflow": "^0.2.0",
+    "gulp": "^3.8.7",
+    "gulp-jshint": "^1.8.4",
+    "jshint-stylish": "^0.4.0",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  }
+}
