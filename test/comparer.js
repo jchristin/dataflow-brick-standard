@@ -18,7 +18,6 @@ describe("Comparer", function () {
 		dataflow.link(comparer, "equal", killer, "kill");
 		dataflow.link(comparer, "greater_or_equal", killer, "kill");
 		dataflow.link(comparer, "greater", killer, "kill");
-		dataflow.activate(comparer, tester, killer);
 
 		var callCount = 0;
 		dataflow.testerDelegate = function (value) {
@@ -44,7 +43,6 @@ describe("Comparer", function () {
 		dataflow.link(comparer, "equal", tester, "test");
 		dataflow.link(comparer, "greater_or_equal", tester, "test");
 		dataflow.link(comparer, "greater", killer, "kill");
-		dataflow.activate(comparer, tester, killer);
 
 		var callCount = 0;
 		dataflow.testerDelegate = function (value) {
@@ -70,7 +68,6 @@ describe("Comparer", function () {
 		dataflow.link(comparer, "equal", killer, "kill");
 		dataflow.link(comparer, "greater_or_equal", tester, "test");
 		dataflow.link(comparer, "greater", tester, "test");
-		dataflow.activate(comparer, tester, killer);
 
 		var callCount = 0;
 		dataflow.testerDelegate = function (value) {

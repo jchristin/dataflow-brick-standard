@@ -20,7 +20,6 @@ describe("XMLParser", function () {
 		};
 
 		dataflow.link(xmlParser, "value", tester, "test");
-		dataflow.activate(xmlParser, tester);
 
 		xmlParser.receive("parse", fs.readFileSync("test/simple.xml", "utf8"));
 	});

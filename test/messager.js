@@ -19,7 +19,6 @@ describe("Messager", function () {
 		};
 
 		dataflow.link(messager, "message", tester, "test");
-		dataflow.activate(messager, tester);
 
 		messager.receive("send", true);
 	});

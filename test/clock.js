@@ -17,7 +17,6 @@ describe("Clock", function () {
 		};
 
 		dataflow.link(clock, "hours", tester, "test");
-		dataflow.activate(clock, tester);
 
 		clock.receive("get_time", true);
 	});
@@ -32,7 +31,6 @@ describe("Clock", function () {
 		};
 
 		dataflow.link(clock, "minutes", tester, "test");
-		dataflow.activate(clock, tester);
 
 		clock.receive("get_time", true);
 	});
@@ -47,7 +45,6 @@ describe("Clock", function () {
 		};
 
 		dataflow.link(clock, "seconds", tester, "test");
-		dataflow.activate(clock, tester);
 
 		clock.receive("get_time", true);
 	});

@@ -14,10 +14,12 @@ describe("Timer", function () {
 
 		dataflow.testerDelegate = function (value) {
 			value.should.be.true;
+			timer.receive("stop", true);
 			done();
 		};
 
 		dataflow.link(timer, "tick", tester, "test");
-		dataflow.activate(timer, tester);
+
+		timer.receive("start", true);
 	});
 });

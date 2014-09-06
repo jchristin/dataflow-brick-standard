@@ -18,7 +18,6 @@ describe("Request", function () {
 		};
 
 		dataflow.link(request, "body", tester, "test");
-		dataflow.activate(request, tester);
 
 		request.receive("get", true);
 	});

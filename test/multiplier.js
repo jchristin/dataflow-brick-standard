@@ -17,7 +17,6 @@ describe("Multiplier", function () {
 		};
 
 		dataflow.link(multiplier, "product", tester, "test");
-		dataflow.activate(multiplier, tester);
 
 		multiplier.receive("set_right", 3);
 		multiplier.receive("set_left", 5);

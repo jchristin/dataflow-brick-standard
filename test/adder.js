@@ -17,7 +17,6 @@ describe("Adder", function () {
 		};
 
 		dataflow.link(adder, "sum", tester, "test");
-		dataflow.activate(adder, tester);
 
 		adder.receive("set_right", 3);
 		adder.receive("set_left", 5);
