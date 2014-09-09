@@ -1,6 +1,6 @@
 {
   "name": "dataflow-bricks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Dataflow standard brick library",
   "main": "index.js",
   "scripts": {
