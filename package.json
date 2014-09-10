@@ -1,5 +1,5 @@
 {
-  "name": "dataflow-bricks",
+  "name": "dataflow-brick-standard",
   "version": "0.2.1",
   "description": "Dataflow standard brick library",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/julbaxter/dataflow-bricks.git"
+    "url": "https://github.com/julbaxter/dataflow-brick-standard.git"
   },
   "author": "Julien Christin <jul.christin@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/julbaxter/dataflow-bricks/issues"
+    "url": "https://github.com/julbaxter/dataflow-brick-standard/issues"
   },
-  "homepage": "https://github.com/julbaxter/dataflow-bricks",
+  "homepage": "https://github.com/julbaxter/dataflow-brick-standard",
   "dependencies": {
     "aws-sdk": "^2.0.15",
     "libxmljs": "^0.11.0",
