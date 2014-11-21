@@ -4,7 +4,7 @@
   "description": "Dataflow standard brick library",
   "main": "index.js",
   "scripts": {
-    "test": "gulp lint && ./node_modules/mocha/bin/mocha --recursive --require should"
+    "test": "./node_modules/gulp/bin/gulp.js lint && ./node_modules/mocha/bin/mocha --recursive --require should"
   },
   "repository": {
     "type": "git",
