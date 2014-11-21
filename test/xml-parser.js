@@ -2,25 +2,23 @@
 
 "use strict";
 
-var dataflow = require("dataflow"),
-	XmlParser = require("../lib/xml-parser"),
+var XmlParser = require("../lib/xml-parser"),
 	Tester = require("../lib/tester"),
 	fs = require("fs");
 
-describe("XMLParser", function () {
-	it("should parse XML", function (done) {
+describe("XMLParser", function() {
+	it("should parse XML", function(done) {
 		var xmlParser = new XmlParser({
-			path: "/note/to"
-		});
-		var tester = new Tester();
+				path: "/note/to"
+			}),
+			tester = new Tester({
+				delegate: function(value) {
+					value.should.be.equal("Tove");
+					done();
+				}
+			});
 
-		dataflow.testerDelegate = function (value) {
-			value.should.be.equal("Tove");
-			done();
-		};
-
-		dataflow.link(xmlParser, "value", tester, "test");
-
+		xmlParser.link("value").to(tester, "test");
 		xmlParser.receive("parse", fs.readFileSync("test/simple.xml", "utf8"));
 	});
 });

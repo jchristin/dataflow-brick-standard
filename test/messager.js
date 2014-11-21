@@ -2,24 +2,22 @@
 
 "use strict";
 
-var dataflow = require("dataflow"),
-	Messager = require("../lib/messager.js"),
+var Messager = require("../lib/messager.js"),
 	Tester = require("../lib/tester.js");
 
-describe("Messager", function () {
-	it("should send its value", function (done) {
+describe("Messager", function() {
+	it("should send its value", function(done) {
 		var messager = new Messager({
-			message: 45
-		});
-		var tester = new Tester();
+				message: 45
+			}),
+			tester = new Tester({
+				delegate: function(value) {
+					value.should.be.equal(45);
+					done();
+				}
+			});
 
-		dataflow.testerDelegate = function (value) {
-			value.should.be.equal(45);
-			done();
-		};
-
-		dataflow.link(messager, "message", tester, "test");
-
+		messager.link("message").to(tester, "test");
 		messager.receive("send", true);
 	});
 });

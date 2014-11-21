@@ -2,50 +2,46 @@
 
 "use strict";
 
-var dataflow = require("dataflow"),
-	Clock = require("../lib/clock"),
+var Clock = require("../lib/clock"),
 	Tester = require("../lib/tester");
 
-describe("Clock", function () {
-	it("should give the current hour", function (done) {
+describe("Clock", function() {
+	it("should give the current hour", function(done) {
 		var clock = new Clock(),
-			tester = new Tester();
+			tester = new Tester({
+				delegate: function(value) {
+					value.should.be.equal(new Date().getHours());
+					done();
+				}
+			});
 
-		dataflow.testerDelegate = function (value) {
-			value.should.be.equal(new Date().getHours());
-			done();
-		};
-
-		dataflow.link(clock, "hours", tester, "test");
-
+		clock.link("hours").to(tester, "test");
 		clock.receive("get_time", true);
 	});
 
-	it("should give the current minute", function (done) {
+	it("should give the current minute", function(done) {
 		var clock = new Clock(),
-			tester = new Tester();
+			tester = new Tester({
+				delegate: function(value) {
+					value.should.be.equal(new Date().getMinutes());
+					done();
+				}
+			});
 
-		dataflow.testerDelegate = function (value) {
-			value.should.be.equal(new Date().getMinutes());
-			done();
-		};
-
-		dataflow.link(clock, "minutes", tester, "test");
-
+		clock.link("minutes").to(tester, "test");
 		clock.receive("get_time", true);
 	});
 
-	it("should give the current second", function (done) {
+	it("should give the current second", function(done) {
 		var clock = new Clock(),
-			tester = new Tester();
+			tester = new Tester({
+				delegate: function(value) {
+					value.should.be.equal(new Date().getSeconds());
+					done();
+				}
+			});
 
-		dataflow.testerDelegate = function (value) {
-			value.should.be.equal(new Date().getSeconds());
-			done();
-		};
-
-		dataflow.link(clock, "seconds", tester, "test");
-
+		clock.link("seconds").to(tester, "test");
 		clock.receive("get_time", true);
 	});
 });
