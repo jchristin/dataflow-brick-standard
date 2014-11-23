@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/julbaxter/dataflow-brick-standard",
   "dependencies": {
+    "JSONPath": "^0.10.0",
     "aws-sdk": "^2.0.15",
+    "cron": "^1.0.5",
     "libxmljs": "^0.12.0",
+    "lodash": "^2.4.1",
     "request": "^2.40.0"
   },
   "peerDependencies": {
