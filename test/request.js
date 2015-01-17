@@ -3,20 +3,16 @@
 "use strict";
 
 var Request = require("../lib/request"),
-	Tester = require("../lib/tester");
+	InputPort = require("dataflow").InputPort;
 
 describe("Request", function() {
 	it("should get url", function(done) {
-		var request = new Request({
-				url: "http://www.google.com"
-			}),
-			tester = new Tester({
-				delegate: function(value) {
-					done();
-				}
+		var request = new Request(),
+			inputPort = new InputPort(function(packet) {
+				done();
 			});
 
-		request.link("body").to(tester, "test");
-		request.receive("get", true);
+		request.outputs.response.pipe(inputPort);
+		request.inputs.url.pushData("http://www.google.com");
 	});
 });

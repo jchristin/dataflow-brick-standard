@@ -3,45 +3,39 @@
 "use strict";
 
 var Clock = require("../lib/clock"),
-	Tester = require("../lib/tester");
+	InputPort = require("dataflow").InputPort;
 
 describe("Clock", function() {
 	it("should give the current hour", function(done) {
 		var clock = new Clock(),
-			tester = new Tester({
-				delegate: function(value) {
-					value.should.be.equal(new Date().getHours());
-					done();
-				}
+			inputPort = new InputPort(function(packet) {
+				packet.data.should.be.equal(new Date().getHours());
+				done();
 			});
 
-		clock.link("hours").to(tester, "test");
-		clock.receive("get_time", true);
+		clock.outputs.hours.pipe(inputPort);
+		clock.inputs.bang.pushData(true);
 	});
 
 	it("should give the current minute", function(done) {
 		var clock = new Clock(),
-			tester = new Tester({
-				delegate: function(value) {
-					value.should.be.equal(new Date().getMinutes());
-					done();
-				}
+			inputPort = new InputPort(function(packet) {
+				packet.data.should.be.equal(new Date().getMinutes());
+				done();
 			});
 
-		clock.link("minutes").to(tester, "test");
-		clock.receive("get_time", true);
+		clock.outputs.minutes.pipe(inputPort);
+		clock.inputs.bang.pushData(true);
 	});
 
 	it("should give the current second", function(done) {
 		var clock = new Clock(),
-			tester = new Tester({
-				delegate: function(value) {
-					value.should.be.equal(new Date().getSeconds());
-					done();
-				}
+			inputPort = new InputPort(function(packet) {
+				packet.data.should.be.equal(new Date().getSeconds());
+				done();
 			});
 
-		clock.link("seconds").to(tester, "test");
-		clock.receive("get_time", true);
+		clock.outputs.seconds.pipe(inputPort);
+		clock.inputs.bang.pushData(true);
 	});
 });
